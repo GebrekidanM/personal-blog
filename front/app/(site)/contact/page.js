@@ -68,7 +68,7 @@ export default function ContactPage() {
             <div className="flex items-center space-x-3">
               <FiMail className="h-6 w-6 text-blue-600" />
               <a href="mailto:atrsaw.name@email.com" className="text-lg text-gray-700 hover:text-blue-600">
-                atrsaw.name@email.com {/* Replace with Atrsaw's real email */}
+                atrsawade@email.com
               </a>
             </div>
             <div className="flex items-center space-x-3">
