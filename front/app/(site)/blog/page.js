@@ -1,34 +1,24 @@
-// app/(site)/blog/page.jsx
-
 import BlogPostCard from "@/components/BlogPostCard";
 
-// --- REAL DATA FETCHING ---
+// --- This function fetches ALL posts from our custom EXPRESS API ---
 async function getPosts() {
   try {
-    const res = await fetch('http://localhost:1337/api/blog-posts?populate=*', { 
-      cache: 'no-store' 
+    const res = await fetch('http://localhost:4000/api/posts', { 
+      cache: 'no-store' // Always get the latest posts
     });
     
     if (!res.ok) {
-      console.error("Strapi API response was not OK:", res.status, res.statusText);
-      return []; // Return empty array on server error
+      throw new Error('Failed to fetch posts from Express API');
     }
 
-    const responseData = await res.json();
-    
-    // --- Defensive Check ---
-    // The posts are in responseData.data. If it doesn't exist or is not an array, return empty.
-    if (!responseData || !Array.isArray(responseData.data)) {
-        console.error("API did not return a 'data' array:", responseData);
-        return [];
-    }
-
-    return responseData.data;
+    // Our Express API returns the array of posts directly
+    return res.json();
   } catch (error) {
     console.error("Error fetching posts:", error);
-    return [];
+    return []; // Return an empty array on error
   }
 }
+
 
 // --- The Main Exported Page Component ---
 export default async function BlogPage() {
@@ -53,18 +43,15 @@ export default async function BlogPage() {
         {allPosts && allPosts.length > 0 ? (
           <div className="grid gap-8 lg:grid-cols-3 md:grid-cols-2">
             {allPosts.map((post) => {
-              if (!post) {
-                return null;
-              }
-
               const transformedPost = {
+                id: post._id, 
                 slug: post.slug,
                 title: post.title,
-                category: post.category?.Text || 'Uncategorized',
+                category: post.category,
                 excerpt: post.excerpt,
-                imageUrl:`http://127.0.0.1:1337${post.featuredImage?.url}`
+                imageUrl: post.featuredImageUrl,
               };
-              return <BlogPostCard key={post.id} post={transformedPost} />;
+              return <BlogPostCard key={transformedPost.id} post={transformedPost} />;
             })}
           </div>
         ) : (

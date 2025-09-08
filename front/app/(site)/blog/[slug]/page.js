@@ -1,48 +1,37 @@
-// app/(site)/blog/[slug]/page.jsx
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-// --- This function fetches the data for a SINGLE post from Strapi ---
 async function getPostData(slug) {
   try {
-    const res = await fetch(`http://localhost:1337/api/blog-posts?filters[slug][$eq]=${slug}&populate=*`, {
-      cache: 'no-store'
+    const res = await fetch(`http://localhost:4000/api/posts/${slug}`, {
+      cache: 'no-store',
     });
 
     if (!res.ok) {
-      throw new Error('Failed to fetch post');
+      return null;
     }
 
-    const responseData = await res.json();
-    
-    // The API returns an array, so we need the first item
-    if (responseData.data && responseData.data.length > 0) {
-      return responseData.data[0];
-    } else {
-      return null; // Post not found
-    }
+    return res.json();
   } catch (error) {
-    console.error("Error fetching single post:", error);
+    console.error("Error fetching single post from Express API:", error);
     return null;
   }
 }
 
-// --- The Main Exported Page Component ---
+
 export default async function BlogPostPage({ params }) {
   const { slug } = params;
-  const postData = await getPostData(slug);
+console.log("Fetching post with slug:", slug);
+  const post = await getPostData(slug);
 
-  // If no post is found, trigger the Next.js 404 page
-  if (!postData) {
+  if (!post) {
     notFound();
   }
   
-  const { title, category, author, date, featuredImage, content } = postData;
-  const imageUrl = featuredImage?.url 
-    ? `http://localhost:1337${featuredImage.url}`
-    : 'https://images.unsplash.com/photo-1521790797524-12432c835848';
+  const { title, category, author, publishedAt, featuredImageUrl, content } = post;
+  
+  const imageUrl = featuredImageUrl
 
   return (
     <main>
@@ -52,13 +41,13 @@ export default async function BlogPostPage({ params }) {
           {/* Header Section */}
           <div className="text-center mb-8">
             <p className="text-base font-semibold text-blue-600 uppercase">
-              {category?.Text || 'Uncategorized'}
+              {category || 'Uncategorized'}
             </p>
             <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
               {title}
             </h1>
             <p className="mt-4 text-md text-gray-500">
-              By {author || 'Atrsaw Aderajew'} on {date || new Date().toLocaleDateString()}
+              Published on {new Date(publishedAt).toLocaleDateString()}
             </p>
           </div>
 
@@ -69,7 +58,7 @@ export default async function BlogPostPage({ params }) {
               alt={title}
               fill
               className="object-cover"
-              priority // Important for performance (LCP)
+              priority
             />
           </div>
 

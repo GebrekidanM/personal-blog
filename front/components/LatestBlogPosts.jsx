@@ -1,32 +1,34 @@
 import BlogPostCard from './BlogPostCard';
+import Link from 'next/link';
 
-// Dummy data - later this will come from your Strapi API
-const dummyPosts = [
-  {
-    slug: 'strategic-analysis-of-banking',
-    title: 'A Strategic Analysis of the Ethiopian Banking Industry',
-    category: 'Strategic Insights',
-    excerpt: 'Diving deep into the competitive landscape of Ethiopian banks using the powerful Porter\'s Five Forces framework.',
-    imageUrl: '', // Placeholder
-  },
-  {
-    slug: 'hidden-costs-of-bad-culture',
-    title: 'Beyond the Balance Sheet: The Hidden Costs of a Bad Company Culture',
-    category: 'Leadership & Culture',
-    excerpt: 'A toxic culture doesn\'t just hurt morale; it directly impacts your bottom line. Here’s how to identify the warning signs.',
-    imageUrl: '', // Placeholder
-  },
-  {
-    slug: 'lessons-from-engineering',
-    title: '3 Lessons Your Business Can Learn from Mechanical Engineering',
-    category: 'Operational Excellence',
-    excerpt: 'Applying the principles of systems thinking and process optimization to build a more resilient and efficient business.',
-    imageUrl: '', // Placeholder
-  },
-];
+async function getLatestPosts() {
+  try {
+    const res = await fetch('http://localhost:4000/api/posts', {
+      cache: 'no-store', // Ensures we always get the latest posts
+    });
 
+    if (!res.ok) {
+      throw new Error('Failed to fetch posts');
+    }
 
-const LatestBlogPosts = () => {
+    const posts = await res.json();
+    // Return only the first 3 posts
+    return posts.slice(0, 3);
+  } catch (error) {
+    console.error("Error fetching latest posts:", error);
+    return []; // Return an empty array if the API call fails
+  }
+}
+
+// This is now a Server Component, so we make it async
+export default async function LatestBlogPosts() {
+  const latestPosts = await getLatestPosts();
+
+  // If there are no posts, we can choose to render nothing
+  if (!latestPosts || latestPosts.length === 0) {
+    return null; 
+  }
+
   return (
     <section className="bg-gray-50 py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,23 +45,30 @@ const LatestBlogPosts = () => {
 
         {/* Blog Post Grid */}
         <div className="mt-12 grid gap-8 lg:grid-cols-3 md:grid-cols-2">
-          {dummyPosts.map((post) => (
-            <BlogPostCard key={post.slug} post={post} />
-          ))}
+          {latestPosts.map((post) => {
+            // Transform the data to match what BlogPostCard expects
+            const transformedPost = {
+              slug: post.slug,
+              title: post.title,
+              category: post.category,
+              excerpt: post.excerpt,
+              // The URL from Cloudinary is already a full URL, no need to add localhost
+              imageUrl: post.featuredImageUrl || 'https://images.unsplash.com/photo-1620714223084-86c9df2a8894',
+            };
+            return <BlogPostCard key={post._id} post={transformedPost} />;
+          })}
         </div>
         
         {/* "View All" Button */}
         <div className="mt-12 text-center">
-          <a
+          <Link
             href="/blog"
             className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
           >
             View All Posts
-          </a>
+          </Link>
         </div>
       </div>
     </section>
   );
 };
-
-export default LatestBlogPosts;

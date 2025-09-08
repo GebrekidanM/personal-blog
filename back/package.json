@@ -1,49 +1,26 @@
 {
   "name": "back",
-  "version": "0.1.0",
-  "private": true,
-  "description": "A Strapi application",
+  "version": "1.0.0",
+  "description": "Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.",
+  "main": "server.js",
   "scripts": {
-    "build": "strapi build",
-    "console": "strapi console",
-    "deploy": "strapi deploy",
-    "develop": "strapi develop",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "strapi": "strapi",
-    "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "dev": "nodemon server.js"
   },
-  "dependencies": {
-    "@strapi/plugin-cloud": "5.23.3",
-    "@strapi/plugin-users-permissions": "5.23.3",
-    "@strapi/strapi": "5.23.3",
-    "better-sqlite3": "11.3.0",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "mongoose": "^8.18.0",
-    "nodemon": "^3.1.10",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "typescript": "^5"
-  },
-  "engines": {
-    "node": ">=18.0.0 <=22.x.x",
-    "npm": ">=6.0.0"
-  },
-  "strapi": {
-    "uuid": "4cc10318-9f2b-46e7-9326-c3fd61b5d3f9",
-    "installId": "0a25f2f695248caef17b05c83224772e0ffb90f8e334972b4d1d8fbe6d1903b9"
-  },
-  "main": "index.js",
-  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^1.41.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.0",
+    "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^3.1.10"
+  }
 }

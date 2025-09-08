@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///E:/LMS/atrsaw/front/app/admin/layout.jsx"],"sourcesContent":["export default function AdminLayout({ children }) {\r\n  return (\r\n    <div className=\"min-h-screen bg-gray-100\">\r\n      {children}\r\n    </div>\r\n  );\r\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS,YAAY,EAAE,QAAQ,EAAE;IAC9C,qBACE,8OAAC;QAAI,WAAU;kBACZ;;;;;;AAGP","debugId":null}}]
+}

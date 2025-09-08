@@ -38,8 +38,8 @@ const BlogPostCard = ({ post })=>{
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                         src: post.imageUrl,
                         alt: post.title,
-                        layout: "fill",
-                        objectFit: "cover"
+                        fill: true,
+                        className: "object-cover"
                     }, void 0, false, {
                         fileName: "[project]/components/BlogPostCard.jsx",
                         lineNumber: 10,
@@ -116,99 +116,105 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$BlogPostCard$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/BlogPostCard.jsx [app-rsc] (ecmascript)");
 ;
 ;
-// --- DUMMY DATA ---
-// This simulates the data we will get from our Strapi CMS.
-// In a real application, you would fetch this data in the page component.
-const allPosts = [
-    {
-        slug: 'strategic-analysis-of-banking',
-        title: 'A Strategic Analysis of the Ethiopian Banking Industry',
-        category: 'Strategic Insights',
-        excerpt: 'Diving deep into the competitive landscape of Ethiopian banks using the powerful Porter\'s Five Forces framework.',
-        imageUrl: ''
-    },
-    {
-        slug: 'hidden-costs-of-bad-culture',
-        title: 'Beyond the Balance Sheet: The Hidden Costs of a Bad Company Culture',
-        category: 'Leadership & Culture',
-        excerpt: 'A toxic culture doesn\'t just hurt morale; it directly impacts your bottom line. Here’s how to identify the warning signs.',
-        imageUrl: ''
-    },
-    {
-        slug: 'lessons-from-engineering',
-        title: '3 Lessons Your Business Can Learn from Mechanical Engineering',
-        category: 'Operational Excellence',
-        excerpt: 'Applying the principles of systems thinking and process optimization to build a more resilient and efficient business.',
-        imageUrl: ''
-    },
-    {
-        slug: 'the-art-of-forgiveness',
-        title: 'The Art of Forgiveness: A Psychological and Spiritual Journey',
-        category: 'Leadership & Culture',
-        excerpt: 'Exploring the complex process of forgiveness through the story of Joseph and its implications for personal and organizational healing.',
-        imageUrl: ''
-    },
-    {
-        slug: 'finding-meaning-in-success',
-        title: 'Finding Meaning at the Peak: Lessons from King Solomon',
-        category: 'Strategic Insights',
-        excerpt: 'An analysis of the existential crisis of success and where true, sustainable fulfillment can be found, inspired by Ecclesiastes.',
-        imageUrl: ''
+// --- This function fetches ALL posts from our custom EXPRESS API ---
+async function getPosts() {
+    try {
+        const res = await fetch('http://localhost:4000/api/posts', {
+            cache: 'no-store' // Always get the latest posts
+        });
+        if (!res.ok) {
+            throw new Error('Failed to fetch posts from Express API');
+        }
+        // Our Express API returns the array of posts directly
+        return res.json();
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+        return []; // Return an empty array on error
     }
-];
-function BlogPage() {
+}
+async function BlogPage() {
+    const allPosts = await getPosts();
+    const PageHeader = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "bg-gray-50 text-center py-16 sm:py-20",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                    className: "text-4xl sm:text-5xl font-extrabold text-gray-900",
+                    children: "Atrsaw's Insights"
+                }, void 0, false, {
+                    fileName: "[project]/app/(site)/blog/page.js",
+                    lineNumber: 29,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "mt-4 text-lg text-gray-600 max-w-2xl mx-auto",
+                    children: "A collection of articles on strategy, operations, and the art of leadership."
+                }, void 0, false, {
+                    fileName: "[project]/app/(site)/blog/page.js",
+                    lineNumber: 32,
+                    columnNumber: 7
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/(site)/blog/page.js",
+            lineNumber: 28,
+            columnNumber: 5
+        }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-gray-50 text-center py-16 sm:py-20",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        className: "text-4xl sm:text-5xl font-extrabold text-gray-900",
-                        children: "Atrsaw's Insights"
-                    }, void 0, false, {
-                        fileName: "[project]/app/(site)/blog/page.js",
-                        lineNumber: 51,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-4 text-lg text-gray-600 max-w-2xl mx-auto",
-                        children: "A collection of articles on strategy, operations, and the art of leadership."
-                    }, void 0, false, {
-                        fileName: "[project]/app/(site)/blog/page.js",
-                        lineNumber: 54,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(PageHeader, {}, void 0, false, {
                 fileName: "[project]/app/(site)/blog/page.js",
-                lineNumber: 50,
+                lineNumber: 40,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: allPosts && allPosts.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "grid gap-8 lg:grid-cols-3 md:grid-cols-2",
-                    children: allPosts.map((post)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$BlogPostCard$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                            post: post
-                        }, post.slug, false, {
+                    children: allPosts.map((post)=>{
+                        const transformedPost = {
+                            id: post._id,
+                            slug: post.slug,
+                            title: post.title,
+                            category: post.category,
+                            excerpt: post.excerpt,
+                            imageUrl: post.featuredImageUrl
+                        };
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$BlogPostCard$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                            post: transformedPost
+                        }, transformedPost.id, false, {
                             fileName: "[project]/app/(site)/blog/page.js",
-                            lineNumber: 73,
-                            columnNumber: 13
-                        }, this))
+                            lineNumber: 54,
+                            columnNumber: 22
+                        }, this);
+                    })
                 }, void 0, false, {
                     fileName: "[project]/app/(site)/blog/page.js",
-                    lineNumber: 71,
-                    columnNumber: 9
+                    lineNumber: 44,
+                    columnNumber: 11
+                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "text-center",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-lg text-gray-700",
+                        children: "No blog posts found. Please check back later!"
+                    }, void 0, false, {
+                        fileName: "[project]/app/(site)/blog/page.js",
+                        lineNumber: 59,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/app/(site)/blog/page.js",
+                    lineNumber: 58,
+                    columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(site)/blog/page.js",
-                lineNumber: 60,
+                lineNumber: 42,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(site)/blog/page.js",
-        lineNumber: 48,
+        lineNumber: 39,
         columnNumber: 5
     }, this);
 }

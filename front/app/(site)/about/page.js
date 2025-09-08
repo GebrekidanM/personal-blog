@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import SiteLayout from '../layout';
 
 // --- Component 1: PageHeader ---
 const PageHeader = () => (
@@ -96,11 +97,11 @@ const ContactCTA = () => (
 // --- The Main About Page Component ---
 export default function AboutPage() {
   return (
-    <>
+    <SiteLayout>
       <PageHeader />
       <StorySection />
       <PhilosophySection />
       <ContactCTA />
-    </>
+    </SiteLayout>
   );
 }

@@ -1,10 +1,8 @@
-// app/(site)/contact/page.jsx
-'use client'; // This directive is needed because we are using hooks (useState)
+'use client'; 
 
 import { useState } from 'react';
-import { FiMail, FiLinkedin } from 'react-icons/fi'; // Icons for contact info
+import { FiMail, FiLinkedin } from 'react-icons/fi';
 
-// --- The Main Exported Page Component ---
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,7 +10,7 @@ export default function ContactPage() {
     subject: '',
     message: '',
   });
-  const [status, setStatus] = useState(''); // To show feedback (e.g., "Sending...", "Success!")
+  const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +27,7 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData), // Send the entire form data state
+        body: JSON.stringify(formData), 
       });
 
       const data = await response.json();
