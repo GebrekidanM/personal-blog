@@ -35,10 +35,10 @@ const StorySection = () => (
             The Journey of a Problem Solver
           </h2>
           <p>
-            My journey began not in a boardroom, but in the world of mechanics and systems. As a **Mechanical Engineer**, I was trained to see the world as an intricate set of interconnected parts. I learned to diagnose complex problems, understand how one small inefficiency could impact an entire system, and design solutions that were both elegant and effective. My passion was in finding order in chaos and making things work better.
+            My journey began not in a boardroom, but in the world of mechanics and systems. As a <b>Mechanical Engineer</b>, I was trained to see the world as an intricate set of interconnected parts. I learned to diagnose complex problems, understand how one small inefficiency could impact an entire system, and design solutions that were both elegant and effective. My passion was in finding order in chaos and making things work better.
           </p>
           <p>
-            But I soon realized that the most complex and fascinating systems are not made of gears and circuits; they are made of people. I wanted to understand the "why" behind the "what"—the business strategy that drives the operational decisions. This curiosity led me to pursue my **MBA**, where I immersed myself in the worlds of strategy, finance, and market dynamics.
+            But I soon realized that the most complex and fascinating systems are not made of gears and circuits; they are made of people. I wanted to understand the "why" behind the "what"—the business strategy that drives the operational decisions. This curiosity led me to pursue my <b>MBA</b>, where I immersed myself in the worlds of strategy, finance, and market dynamics.
           </p>
           <p>
             This is where my two worlds connected. But I felt a crucial piece was still missing: the human element. Through my community leadership as a Deacon and my deep interest in psychology, I have come to believe that a business's greatest asset and most common point of failure is its people. This led me to write my book, "Beyond the Shadow," exploring the intersection of spiritual well-being and psychological resilience.
