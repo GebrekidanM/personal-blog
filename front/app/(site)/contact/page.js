@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FiMail, FiLinkedin } from 'react-icons/fi';
+import { api } from '@/lib/api';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ export default function ContactPage() {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('http://localhost:4000/api/contact', {
+      const response = await fetch(`${api}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

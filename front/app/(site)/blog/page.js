@@ -4,7 +4,7 @@ import {api} from "@/lib/api";
 async function getPosts() {
   try {
     const res = await fetch(`${api}/posts`, { 
-      cache: 'no-store'
+      cache: "no-store"
     });
     
     if (!res.ok) {

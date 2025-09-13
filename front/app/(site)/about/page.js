@@ -22,7 +22,7 @@ const StorySection = () => (
         <div className="md:col-span-1 flex justify-center">
           <Image
             className="rounded-lg shadow-xl h-64 w-64 object-cover"
-            src="/placeholder-about.jpg" // Replace with Atrsaw's photo
+            src="/next.svg"
             alt="Atrsaw Aderajew"
             width={256}
             height={256}
