@@ -1,0 +1,12 @@
+# netlify.toml
+
+[build]
+  # This is the command Netlify will run to build your site.
+  command = "npm run build"
+  
+  # For Next.js, it's the .next folder.
+  publish = ".next"
+
+# how to correctly handle server components, image optimization, etc.
+[functions]
+  directory = ".next/functions"
