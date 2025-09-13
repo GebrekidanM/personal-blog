@@ -1,26 +1,24 @@
 import BlogPostCard from "@/components/BlogPostCard";
+import {api} from "@/lib/api";
 
-// --- This function fetches ALL posts from our custom EXPRESS API ---
 async function getPosts() {
   try {
-    const res = await fetch('http://localhost:4000/api/posts', { 
-      cache: 'no-store' // Always get the latest posts
+    const res = await fetch(`${api}/posts`, { 
+      cache: 'no-store'
     });
     
     if (!res.ok) {
       throw new Error('Failed to fetch posts from Express API');
     }
 
-    // Our Express API returns the array of posts directly
     return res.json();
   } catch (error) {
     console.error("Error fetching posts:", error);
-    return []; // Return an empty array on error
+    return [];
   }
 }
 
 
-// --- The Main Exported Page Component ---
 export default async function BlogPage() {
   const allPosts = await getPosts();
 
