@@ -329,7 +329,7 @@ function EditPostForm(param) {
         setStatus('Uploading image...');
         try {
             const token = localStorage.getItem('authToken');
-            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post('http://localhost:4000/api/upload', uploadFormData, {
+            const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post("".concat(api, "/upload"), uploadFormData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'x-auth-token': token
@@ -358,7 +358,7 @@ function EditPostForm(param) {
                 ...formData,
                 content
             };
-            await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].put("http://localhost:4000/api/posts/".concat(initialPostData._id), finalPostData, {
+            await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].put("".concat(api, "/posts/").concat(initialPostData._id), finalPostData, {
                 headers: {
                     'x-auth-token': token
                 }

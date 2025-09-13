@@ -1,8 +1,7 @@
-// routes/upload.js
 const express = require('express');
 const multer = require('multer');
 const { storage } = require('../config/cloudinary');
-const auth = require('../middleware/auth'); // Our security guard
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 const upload = multer({ storage });
@@ -10,7 +9,7 @@ const upload = multer({ storage });
 // @route   POST api/upload
 // @desc    Upload an image for a blog post
 // @access  Private
-router.post('/', [auth, upload.single('image')], (req, res) => {
+router.post('/', auth, upload.single('image'), (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ msg: 'No file uploaded.' });

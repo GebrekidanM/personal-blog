@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import useAuth from '../../../../../hooks/useAuth';
 import TiptapEditor from '../../../../../components/TiptapEditor';
+import {api} from '@/lib/api';
+import Link from 'next/link';
 
 export default function NewPostPage() {
   const { isAuthenticated, loading } = useAuth();
@@ -37,7 +39,7 @@ export default function NewPostPage() {
 
     try {
       const token = localStorage.getItem('authToken');
-      const res = await axios.post('http://localhost:4000/api/upload', formData, {
+      const res = await axios.post(`${api}/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'x-auth-token': token,
@@ -65,7 +67,7 @@ export default function NewPostPage() {
       if (!token) throw new Error('Authentication error.');
 
       const newPost = { title, slug, excerpt, content, category,featuredImageUrl };
-      await axios.post('http://localhost:4000/api/posts', newPost, {
+      await axios.post(`${api}/posts`, newPost, {
         headers: { 'x-auth-token': token },
       });
 
@@ -80,11 +82,21 @@ export default function NewPostPage() {
     }
   };
 
-  if (loading) return <div className="text-center py-10">Loading...</div>;
-  if (!isAuthenticated) return null;
+ if (loading) {
+    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+  }
 
+  if(isAuthenticated === false && !loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen"> 
+        <p className="text-red-600 font-bold">You must be logged in to access this page.</p>
+      </div>
+    );
+  }
+  
   return (
     <div className="container mx-auto px-4 py-8">
+      <Link href="/admin/dashboard" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
       <form onSubmit={handleSubmit}>
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Create New Post</h1>

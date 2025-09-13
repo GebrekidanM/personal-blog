@@ -12,11 +12,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(cors({
   origin: process.env.CORS_ORIGIN,
 }));
-app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Atrsaw Form API is running!');
-});
+app.use(express.json());
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/posts', require('./routes/posts')); 

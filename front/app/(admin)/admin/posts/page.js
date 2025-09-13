@@ -5,6 +5,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import useAuth from '../../../../hooks/useAuth';
 import { FiEdit, FiTrash2, FiPlusCircle } from 'react-icons/fi';
+import { api } from '@/lib/api';
 
 export default function ManagePostsPage() {
   const { isAuthenticated, loading } = useAuth();
@@ -21,7 +22,7 @@ export default function ManagePostsPage() {
       }
       
       // We use the PUBLIC endpoint to get posts
-      const res = await axios.get('http://localhost:4000/api/posts');
+      const res = await axios.get(`${api}/posts`);
       setPosts(res.data);
       if (res.data.length === 0) {
         setStatus('No posts found. Create your first one!');
@@ -50,7 +51,7 @@ export default function ManagePostsPage() {
     
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`http://localhost:4000/api/posts/${postId}`, {
+      await axios.delete(`${api}/posts/${postId}`, {
         headers: { 'x-auth-token': token }
       });
       // Refresh the list of posts after deletion
@@ -62,15 +63,21 @@ export default function ManagePostsPage() {
     }
   };
 
-  if (loading) {
-    return <div className="text-center py-10">Loading...</div>;
+   if (loading) {
+    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
   }
-  if (!isAuthenticated) {
-    return null; // The auth hook handles redirection
+
+  if(isAuthenticated === false && !loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen"> 
+        <p className="text-red-600 font-bold">You must be logged in to access this page.</p>
+      </div>
+    );
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Link href="/admin/dashboard" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Manage Posts</h1>
         <Link href="/admin/posts/new" className="flex items-center bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">

@@ -6,7 +6,7 @@
   "static/chunks/node_modules_@tiptap_core_dist_f5afb391._.js",
   "static/chunks/node_modules_react-icons_lu_index_mjs_9c1f52d1._.js",
   "static/chunks/node_modules_3af44342._.js",
-  "static/chunks/_1141d3f5._.js"
+  "static/chunks/_8631fdf6._.js"
 ],
     source: "dynamic"
 });

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import {api} from '@/lib/api';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -16,26 +17,16 @@ export default function LoginPage() {
 
     try {
       const response = await axios.post(
-        'http://localhost:4000/api/users/login', // Your Express API login endpoint
+        `${api}/users/login`,
         { email, password },
         { headers: { 'Content-Type': 'application/json' } }
       );
-
-      // If login is successful, the API sends back a token
       const { token } = response.data;
-
-      // --- Store the token ---
-      // The most common and secure way for client-side storage
       localStorage.setItem('authToken', token);
-
-      // Set axios default header for all future requests
       axios.defaults.headers.common['x-auth-token'] = token;
-
-      // Redirect the user to the admin dashboard
       router.push('/admin/dashboard');
 
     } catch (err) {
-      // If the API returns an error (e.g., 400 Invalid Credentials)
       const errorMessage = err.response?.data?.msg || 'Login failed. Please try again.';
       setError(errorMessage);
       console.error('Login error:', err);

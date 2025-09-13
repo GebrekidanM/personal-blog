@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import TiptapEditor from '../../../components/TiptapEditor';
+import { api } from '@/lib/api';
 
 export default function EditPostForm({ initialPostData }) {
   const router = useRouter();
@@ -43,15 +44,13 @@ export default function EditPostForm({ initialPostData }) {
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
     const uploadFormData = new FormData();
     uploadFormData.append('image', file);
     setIsUploading(true);
     setStatus('Uploading image...');
-
     try {
       const token = localStorage.getItem('authToken');
-      const res = await axios.post('http://localhost:4000/api/upload', uploadFormData, {
+      const res = await axios.post(`${api}/upload`, uploadFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'x-auth-token': token,
@@ -78,7 +77,7 @@ export default function EditPostForm({ initialPostData }) {
       const token = localStorage.getItem('authToken');
       const finalPostData = { ...formData, content };
       
-      await axios.put(`http://localhost:4000/api/posts/${initialPostData._id}`, finalPostData, {
+      await axios.put(`${api}/posts/${initialPostData._id}`, finalPostData, {
         headers: { 'x-auth-token': token },
       });
 
