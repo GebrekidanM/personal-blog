@@ -1,5 +1,6 @@
 import BlogPostCard from "@/components/BlogPostCard";
-import {api} from "@/lib/api";
+import { api } from "@/lib/api";
+
 
 async function getPosts() {
   try {

@@ -151,7 +151,7 @@ async function BlogPage() {
                     children: "Atrsaw's Insights"
                 }, void 0, false, {
                     fileName: "[project]/app/(site)/blog/page.js",
-                    lineNumber: 27,
+                    lineNumber: 28,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -159,20 +159,20 @@ async function BlogPage() {
                     children: "A collection of articles on strategy, operations, and the art of leadership."
                 }, void 0, false, {
                     fileName: "[project]/app/(site)/blog/page.js",
-                    lineNumber: 30,
+                    lineNumber: 31,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(site)/blog/page.js",
-            lineNumber: 26,
+            lineNumber: 27,
             columnNumber: 5
         }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(PageHeader, {}, void 0, false, {
                 fileName: "[project]/app/(site)/blog/page.js",
-                lineNumber: 38,
+                lineNumber: 39,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -192,13 +192,13 @@ async function BlogPage() {
                             post: transformedPost
                         }, transformedPost.id, false, {
                             fileName: "[project]/app/(site)/blog/page.js",
-                            lineNumber: 52,
+                            lineNumber: 53,
                             columnNumber: 22
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/app/(site)/blog/page.js",
-                    lineNumber: 42,
+                    lineNumber: 43,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "text-center",
@@ -207,23 +207,23 @@ async function BlogPage() {
                         children: "No blog posts found. Please check back later!"
                     }, void 0, false, {
                         fileName: "[project]/app/(site)/blog/page.js",
-                        lineNumber: 57,
+                        lineNumber: 58,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(site)/blog/page.js",
-                    lineNumber: 56,
+                    lineNumber: 57,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(site)/blog/page.js",
-                lineNumber: 40,
+                lineNumber: 41,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(site)/blog/page.js",
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 5
     }, this);
 }
