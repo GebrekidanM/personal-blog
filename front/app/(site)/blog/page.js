@@ -25,7 +25,7 @@ export default async function BlogPage() {
   const PageHeader = () => (
     <div className="bg-gray-50 text-center py-16 sm:py-20">
       <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
-        Atrsaw's Insights
+        Atrsaw&apos;s Insights
       </h1>
       <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
         A collection of articles on strategy, operations, and the art of leadership.

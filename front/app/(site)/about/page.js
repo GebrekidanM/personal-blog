@@ -41,7 +41,7 @@ const StorySection = () => (
           </p>
           <p>
             {/* --- THIS IS THE FIX for the ESLint error --- */}
-            Through my community leadership as a Deacon and my deep interest in psychology, I have come to believe that a business&apos;s greatest asset and most common point of failure is its people. This led me to write my book, "Beyond the Shadow," exploring the intersection of spiritual well-being and psychological resilience.
+            Through my community leadership as a Deacon and my deep interest in psychology, I have come to believe that a business&apos;s greatest asset and most common point of failure is its people. This led me to write my book, Beyond the Shadow, exploring the intersection of spiritual well-being and psychological resilience.
           </p>
         </div>
       </div>
@@ -75,7 +75,6 @@ const PhilosophySection = () => (
 
 // --- Component 4: ContactCTA ---
 const ContactCTA = () => (
-  // ... (This component is also correct, no changes needed) ...
   <div className="bg-blue-600 text-center py-16 sm:py-20">
     <h2 className="text-3xl font-extrabold text-white">Ready to Build a Better Business?</h2>
     <p className="mt-4 text-lg text-gray-200">

@@ -51,7 +51,7 @@ export default function ContactPage() {
       <div className="bg-gray-50 text-center py-16 sm:py-20">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900">Get in Touch</h1>
         <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-          Have a project in mind or just want to discuss an idea? I'd love to hear from you.
+          Have a project in mind or just want to discuss an idea? I&apos;d love to hear from you.
         </p>
       </div>
 
