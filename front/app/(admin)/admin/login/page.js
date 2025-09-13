@@ -24,7 +24,7 @@ export default function LoginPage() {
       const { token } = response.data;
       localStorage.setItem('authToken', token);
       axios.defaults.headers.common['x-auth-token'] = token;
-      router.push('/admin/dashboard');
+      router.push('/admin');
 
     } catch (err) {
       const errorMessage = err.response?.data?.msg || 'Login failed. Please try again.';

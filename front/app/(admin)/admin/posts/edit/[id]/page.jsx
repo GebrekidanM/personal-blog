@@ -35,7 +35,7 @@ export default async function EditPostPage({ params }) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link href="/admin/dashboard" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
+      <Link href="/admin" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
       <EditPostForm initialPostData={postData} />
     </div>
   );

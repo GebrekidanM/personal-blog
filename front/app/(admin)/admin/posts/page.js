@@ -77,7 +77,7 @@ export default function ManagePostsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link href="/admin/dashboard" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
+      <Link href="/admin" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Manage Posts</h1>
         <Link href="/admin/posts/new" className="flex items-center bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">

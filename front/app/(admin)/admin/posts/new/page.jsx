@@ -96,7 +96,7 @@ export default function NewPostPage() {
   
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link href="/admin/dashboard" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
+      <Link href="/admin" className="text-blue-600 hover:underline mb-4 inline-block">← Back to Dashboard</Link>
       <form onSubmit={handleSubmit}>
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Create New Post</h1>
