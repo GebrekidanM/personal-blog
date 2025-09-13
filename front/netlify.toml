@@ -10,9 +10,16 @@
 # how to correctly handle server components, image optimization, etc.
 [functions]
   directory = ".next/functions"
+<<<<<<< HEAD
 
 
   [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+=======
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+>>>>>>> 0355f401bcfdd54fc9fe3da50390a2ed891e1b1d
