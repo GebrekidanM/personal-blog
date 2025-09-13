@@ -41,7 +41,7 @@ const StorySection = () => (
             But I soon realized that the most complex and fascinating systems are not made of gears and circuits; they are made of people. I wanted to understand the &quot; why behind the &quot; what—the business strategy that drives the operational decisions. This curiosity led me to pursue my <b>MBA</b>, where I immersed myself in the worlds of strategy, finance, and market dynamics.
           </p>
           <p>
-            This is where my two worlds connected. But I felt a crucial piece was still missing: the human element. Through my community leadership as a Deacon and my deep interest in psychology, I have come to believe that a business's greatest asset and most common point of failure is its people. This led me to write my book, Beyond the Shadow, exploring the intersection of spiritual well-being and psychological resilience.
+            This is where my two worlds connected. But I felt a crucial piece was still missing: the human element. Through my community leadership as a Deacon and my deep interest in psychology, I have come to believe that a business is greatest asset and most common point of failure is its people. This led me to write my book, Beyond the Shadow, exploring the intersection of spiritual well-being and psychological resilience.
           </p>
         </div>
       </div>
