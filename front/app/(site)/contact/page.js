@@ -62,7 +62,7 @@ export default function ContactPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-gray-800">Contact Information</h2>
             <p className="text-gray-600">
-              Fill out the form, or reach out to me directly through one of the channels below. I'll get back to you as soon as possible.
+              Fill out the form, or reach out to me directly through one of the channels below. I will get back to you as soon as possible.
             </p>
             <div className="flex items-center space-x-3">
               <FiMail className="h-6 w-6 text-blue-600" />
