@@ -2,7 +2,7 @@ import EditPostForm from '../../../EditPostForm';
 import { notFound } from 'next/navigation';
 import { api } from '../../../../../../lib/api';
 import Link from 'next/link';
-import useAuth from '../../../../hooks/useAuth';
+import useAuth from '../../../../../../hooks/useAuth';
 
 async function getPostData(id) {
     const { isAuthenticated, loading } = useAuth();
