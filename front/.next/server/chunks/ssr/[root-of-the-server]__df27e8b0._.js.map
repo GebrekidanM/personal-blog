@@ -1,8 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///E:/LMS/atrsaw/app/components/Navbar.jsx"],"sourcesContent":["import React from 'react'\r\n\r\nconst Navbar = () => {\r\n  return (\r\n    <div>\r\n      \r\n    </div>\r\n  )\r\n}\r\n\r\nexport default Navbar\r\n"],"names":[],"mappings":";;;;;AAAA;;;AAEA,MAAM,SAAS;IACb,qBACE,8OAAC;;;;;AAIL;uCAEe","debugId":null}},
-    {"offset": {"line": 35, "column": 0}, "map": {"version":3,"sources":["file:///E:/LMS/atrsaw/app/page.js"],"sourcesContent":["import Image from \"next/image\";\nimport Navbar from \"./components/Navbar\";\n\nexport default function Home() {\n  return (\n    <div>\n      <Navbar/>\n      <main>\n        \n      </main>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;AACA;;;;AAEe,SAAS;IACtB,qBACE,8OAAC;;0BACC,8OAAC,uIAAM;;;;;0BACP,8OAAC;;;;;;;;;;;AAKP","debugId":null}}]
-}
