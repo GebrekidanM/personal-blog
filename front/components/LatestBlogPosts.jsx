@@ -1,10 +1,11 @@
+import { api } from '@/lib/api';
 import BlogPostCard from './BlogPostCard';
 import Link from 'next/link';
 
 async function getLatestPosts() {
   try {
-    const res = await fetch('http://localhost:4000/api/posts', {
-      cache: 'no-store', // Ensures we always get the latest posts
+    const res = await fetch(`${api}/posts`, {
+      cache: 'no-store',
     });
 
     if (!res.ok) {
@@ -12,19 +13,16 @@ async function getLatestPosts() {
     }
 
     const posts = await res.json();
-    // Return only the first 3 posts
     return posts.slice(0, 3);
   } catch (error) {
     console.error("Error fetching latest posts:", error);
-    return []; // Return an empty array if the API call fails
+    return [];
   }
 }
 
-// This is now a Server Component, so we make it async
 export default async function LatestBlogPosts() {
   const latestPosts = await getLatestPosts();
 
-  // If there are no posts, we can choose to render nothing
   if (!latestPosts || latestPosts.length === 0) {
     return null; 
   }

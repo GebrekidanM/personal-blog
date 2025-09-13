@@ -238,6 +238,15 @@ const HeroSection = ()=>{
 };
 const __TURBOPACK__default__export__ = HeroSection;
 }),
+"[project]/lib/api.js [app-rsc] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "api",
+    ()=>api
+]);
+const api = ("TURBOPACK compile-time value", "http://localhost:4000/api");
+}),
 "[project]/components/BlogPostCard.jsx [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -337,30 +346,30 @@ __turbopack_context__.s([
     ()=>LatestBlogPosts
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/api.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$BlogPostCard$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/BlogPostCard.jsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-rsc] (ecmascript)");
 ;
 ;
 ;
+;
 async function getLatestPosts() {
     try {
-        const res = await fetch(`${api}/posts`, {
+        const res = await fetch(`${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["api"]}/posts`, {
             cache: 'no-store'
         });
         if (!res.ok) {
             throw new Error('Failed to fetch posts');
         }
         const posts = await res.json();
-        // Return only the first 3 posts
         return posts.slice(0, 3);
     } catch (error) {
         console.error("Error fetching latest posts:", error);
-        return []; // Return an empty array if the API call fails
+        return [];
     }
 }
 async function LatestBlogPosts() {
     const latestPosts = await getLatestPosts();
-    // If there are no posts, we can choose to render nothing
     if (!latestPosts || latestPosts.length === 0) {
         return null;
     }
@@ -377,7 +386,7 @@ async function LatestBlogPosts() {
                             children: "From the Blog"
                         }, void 0, false, {
                             fileName: "[project]/components/LatestBlogPosts.jsx",
-                            lineNumber: 38,
+                            lineNumber: 36,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -385,13 +394,13 @@ async function LatestBlogPosts() {
                             children: "Actionable insights on strategy, operations, and leadership."
                         }, void 0, false, {
                             fileName: "[project]/components/LatestBlogPosts.jsx",
-                            lineNumber: 41,
+                            lineNumber: 39,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/LatestBlogPosts.jsx",
-                    lineNumber: 37,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -410,13 +419,13 @@ async function LatestBlogPosts() {
                             post: transformedPost
                         }, post._id, false, {
                             fileName: "[project]/components/LatestBlogPosts.jsx",
-                            lineNumber: 58,
+                            lineNumber: 56,
                             columnNumber: 20
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/LatestBlogPosts.jsx",
-                    lineNumber: 47,
+                    lineNumber: 45,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -427,23 +436,23 @@ async function LatestBlogPosts() {
                         children: "View All Posts"
                     }, void 0, false, {
                         fileName: "[project]/components/LatestBlogPosts.jsx",
-                        lineNumber: 64,
+                        lineNumber: 62,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/LatestBlogPosts.jsx",
-                    lineNumber: 63,
+                    lineNumber: 61,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/LatestBlogPosts.jsx",
-            lineNumber: 34,
+            lineNumber: 32,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/LatestBlogPosts.jsx",
-        lineNumber: 33,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 }
@@ -545,4 +554,4 @@ module.exports = mod;
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__f9293bbc._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__ac586bc5._.js.map
