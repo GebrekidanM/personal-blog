@@ -1,11 +1,18 @@
-# netlify.toml
+# netlify.toml - Advanced Configuration for Next.js App Router
 
 [build]
   command = "npm run build"
   publish = ".next"
 
-# --- ADD THIS RULE ---
+# This plugin is essential for correctly handling Next.js on Netlify.
+# It automatically configures functions and redirects.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# The redirect rule below is a fallback and sometimes needed.
+# The plugin should handle most of it, but this makes it explicit.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/.netlify/functions/server"
   status = 200
+  force = true
