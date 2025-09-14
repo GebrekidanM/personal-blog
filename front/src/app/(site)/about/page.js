@@ -1,9 +1,6 @@
-// app/(site)/about/page.jsx
-
 import Image from 'next/image';
 import Link from 'next/link';
 
-// NOTE: We DO NOT import the layout here. It's applied automatically.
 
 // --- Component 1: PageHeader ---
 const PageHeader = () => (

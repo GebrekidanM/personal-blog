@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FiMail, FiLinkedin } from 'react-icons/fi';
-import { api } from '@/lib/api';
+import { api } from '../../../lib/api';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

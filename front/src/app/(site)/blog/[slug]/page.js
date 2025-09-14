@@ -1,10 +1,11 @@
+import { api } from '../../../../lib/api';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 async function getPostData(slug) {
   try {
-    const res = await fetch(`http://localhost:4000/api/posts/${slug}`, {
+    const res = await fetch(`${api}/posts/${slug}`, {
       cache: 'no-store',
     });
 

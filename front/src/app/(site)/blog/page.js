@@ -1,4 +1,4 @@
-import BlogPostCard from "@/components/BlogPostCard";
+import BlogPostCard from "../../../components/BlogPostCard";
 import { api } from "@/lib/api";
 
 
