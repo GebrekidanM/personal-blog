@@ -1,0 +1,11 @@
+# netlify.toml
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# --- ADD THIS RULE ---
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
