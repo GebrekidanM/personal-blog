@@ -1,16 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
-
-// --- Component 1: PageHeader ---
-const PageHeader = () => (
-  <div className="bg-gray-800 text-center py-16 sm:py-20">
-    <h1 className="text-4xl sm:text-5xl font-extrabold text-white">My Story</h1>
-    <p className="mt-4 text-lg text-gray-300">
-      From Engineering Systems to Empowering People
-    </p>
-  </div>
-);
+import PageHeader from '../../../components/PageHeader';
 
 // --- Component 2: StorySection ---
 const StorySection = () => (
@@ -20,7 +10,7 @@ const StorySection = () => (
         <div className="md:col-span-1 flex justify-center">
           <Image
             className="rounded-lg shadow-xl h-64 w-64 object-cover"
-            src="/next.svg" // Remember to replace this with Atrsaw's actual photo
+            src="/vercel.png"
             alt="Atrsaw Aderajew"
             width={256}
             height={256}
@@ -72,7 +62,7 @@ const PhilosophySection = () => (
 
 // --- Component 4: ContactCTA ---
 const ContactCTA = () => (
-  <div className="bg-blue-600 text-center py-16 sm:py-20">
+  <div className="bg-gray-800 text-center py-16 sm:py-20">
     <h2 className="text-3xl font-extrabold text-white">Ready to Build a Better Business?</h2>
     <p className="mt-4 text-lg text-gray-200">
       Let us discuss how we can work together to achieve your goals.

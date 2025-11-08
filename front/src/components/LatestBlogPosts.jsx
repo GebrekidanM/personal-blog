@@ -61,7 +61,7 @@ export default async function LatestBlogPosts() {
         <div className="mt-12 text-center">
           <Link
             href="/blog"
-            className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
+            className="inline-block bg-gray-800 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-900 transition-transform transform hover:scale-105"
           >
             View All Posts
           </Link>
