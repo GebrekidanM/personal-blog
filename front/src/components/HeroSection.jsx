@@ -18,12 +18,12 @@ const HeroSection = () => {
   if (!hero) {
     return (
       <div className="flex items-center justify-center h-[60vh] text-gray-500 text-lg animate-pulse">
-        Loading hero section...
+        empty hero section...
       </div>
     );
   }
 
-  const [mainTitle, highlightTitle] = hero.title?.split(',') || [];
+  const [mainTitle, highlightTitle] = hero?.title?.split(',') || [];
 
   return (
     <section className="relative bg-gradient-to-br from-blue-50 via-white to-gray-100 overflow-hidden">
@@ -41,7 +41,7 @@ const HeroSection = () => {
             )}
           </h1>
 
-          {hero.subtitle && (
+          {hero?.subtitle && (
             <p className="text-xl font-medium text-blue-500 mt-2">
               <TypeAnimation
                 sequence={[
