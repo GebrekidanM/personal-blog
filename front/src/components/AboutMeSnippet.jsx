@@ -33,7 +33,7 @@ const AboutMeSnippet = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
             {about.name}
           </h2>
-          <p className="mt-4 text-lg text-gray-600">{about.title}</p>
+          <p className="mt-4 text-2xl font-bold text-gray-600">{about.title}</p>
           <p className="mt-3 text-lg text-gray-600">{about.description}</p>
           <div className="mt-8">
             <a

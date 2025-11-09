@@ -13,7 +13,7 @@ const StorySection = ({aboutData}) => (
         <div className="md:col-span-1 flex justify-center">
           <Image
             className="rounded-lg shadow-xl h-64 w-64 object-cover"
-            src="/vercel.png"
+            src={aboutData?.image}
             alt="Atrsaw Aderajew"
             width={256}
             height={256}

@@ -33,7 +33,7 @@ export default function AboutAdminPage() {
     if (file) formData.append('image', file);
 
     try {
-      await axios.post(API_URL, formData, {
+      await axios.post(`${api}/about`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       alert('✅ About info updated successfully');
