@@ -1,9 +1,12 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '../../../components/PageHeader';
+import { useEffect, useState } from 'react';
+import {api} from '../../../lib/api';
 
-// --- Component 2: StorySection ---
-const StorySection = () => (
+// --- Component 1: StorySection ---
+const StorySection = ({aboutData}) => (
   <div className="bg-white py-16 sm:py-20">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
@@ -18,17 +21,10 @@ const StorySection = () => (
         </div>
         <div className="md:col-span-2 text-lg text-gray-700 space-y-6">
           <h2 className="text-3xl font-bold text-gray-900">
-            The Journey of a Problem Solver
+            {aboutData?.title}
           </h2>
           <p>
-            My journey began not in a boardroom, but in the world of mechanics and systems. As a <b>Mechanical Engineer</b>, I was trained to see the world as an intricate set of interconnected parts. I learned to diagnose complex problems, understand how one small inefficiency could impact an entire system, and design solutions that were both elegant and effective.
-          </p>
-          <p>
-            But I soon realized that the most complex and fascinating systems are not made of gears and circuits; they are made of people. I wanted to understand the why behind the what—the business strategy that drives the operational decisions. This curiosity led me to pursue my <b>MBA</b>.
-          </p>
-          <p>
-            {/* --- THIS IS THE FIX for the ESLint error --- */}
-            Through my community leadership as a Deacon and my deep interest in psychology, I have come to believe that a business&apos;s greatest asset and most common point of failure is its people. This led me to write my book, Beyond the Shadow, exploring the intersection of spiritual well-being and psychological resilience.
+            {aboutData?.description}
           </p>
         </div>
       </div>
@@ -81,10 +77,19 @@ const ContactCTA = () => (
 // --- The Main About Page Component ---
 // NOTE: It is NO LONGER wrapped in <SiteLayout>
 export default function AboutPage() {
+  const [aboutData, setAboutData] = useState(null);
+
+  console.log(aboutData)
+  useEffect(() => {
+    fetch(`${api}/about`)
+      .then((res) => res.json())
+      .then((data) => setAboutData(data))
+      .catch((err) => console.error('Error fetching About data:', err));
+  }, []);
   return (
     <main>
       <PageHeader />
-      <StorySection />
+      <StorySection aboutData={aboutData}/>
       <PhilosophySection />
       <ContactCTA />
     </main>

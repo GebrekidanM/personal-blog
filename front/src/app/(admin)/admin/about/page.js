@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import {api} from '../../../../lib/api';
 
 export default function AboutAdminPage() {
   const [about, setAbout] = useState({ name: '', title: '', description: '', image: '' });
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const API_URL = 'http://localhost:4000/api/about'; // change when deployed
 
   useEffect(() => {
     fetchAbout();
@@ -15,7 +15,7 @@ export default function AboutAdminPage() {
 
   const fetchAbout = async () => {
     try {
-      const res = await axios.get(API_URL);
+      const res = await axios.get(`${api}/about`);
       if (res.data) setAbout(res.data);
     } catch (err) {
       console.error('Fetch error:', err);

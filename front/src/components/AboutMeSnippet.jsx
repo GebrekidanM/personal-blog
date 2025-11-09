@@ -1,12 +1,13 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import {api} from '../lib/api';
 
 const AboutMeSnippet = () => {
   const [about, setAbout] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/about`)
+    fetch(`${api}/about`)
       .then(res => res.json())
       .then(data => setAbout(data))
       .catch(err => console.error(err));

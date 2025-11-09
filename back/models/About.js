@@ -14,9 +14,6 @@ const AboutSchema = new mongoose.Schema({
   },
   image: {
     type: String
-  },
-  link: {
-    type: String
   }
 }, { timestamps: true });
 

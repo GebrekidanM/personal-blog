@@ -8,8 +8,7 @@ const upload = multer({ storage });
 // ------------------- CREATE / POST -------------------
 router.post('/', upload.single('image'), async (req, res) => {
   try {
-    const { name, title, description, link } = req.body;
-
+    const { name, title, description} = req.body;
     const existing = await About.findOne();
     if (existing) {
       return res.status(400).json({ message: "About info already exists. Use PUT to update." });
@@ -18,8 +17,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     const about = new About({
       name,
       title,
-      description: Array.isArray(description) ? description : [description],
-      link,
+      description: description,
       image: req.file ? req.file.path : null
     });
 
@@ -46,12 +44,11 @@ router.get('/', async (req, res) => {
 // ------------------- UPDATE / PUT -------------------
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
-    const { name, title, description, link } = req.body;
+    const { name, title, description} = req.body;
     const updateData = {
       name,
       title,
-      description: Array.isArray(description) ? description : [description],
-      link
+      description: description,
     };
     if (req.file) updateData.image = req.file.path; // Cloudinary URL
 
