@@ -3,12 +3,12 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const auth = require('../middleware/auth');
 
 // @route   POST api/users/register
 // @desc    Register a new user (a one-time setup for Atrsaw)
 router.post('/register', async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
   try {
     let user = await User.findOne({ email });
     if (user) {
@@ -51,6 +51,21 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
+  }
+});
+
+router.get('/me',auth ,async (req, res) => {
+  console.log('Fetching user info for user ID:', req.user);
+  const token = req.header('x-auth-token');
+  if (!token) {
+    return res.status(401).json({ msg: 'No token, authorization denied' });
+  }
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    res.status(401).json({ msg: 'Token is not valid' });
   }
 });
 

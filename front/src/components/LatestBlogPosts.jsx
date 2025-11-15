@@ -48,9 +48,9 @@ export default async function LatestBlogPosts() {
             const transformedPost = {
               slug: post.slug,
               title: post.title,
-              category: post.category,
+              category: post.categoryId.name,
+              author: post.author.name,
               excerpt: post.excerpt,
-              // The URL from Cloudinary is already a full URL, no need to add localhost
               imageUrl: post.featuredImageUrl || 'https://images.unsplash.com/photo-1620714223084-86c9df2a8894',
             };
             return <BlogPostCard key={post._id} post={transformedPost} />;

@@ -18,7 +18,7 @@ const HeroSection = () => {
   if (!hero) {
     return (
       <div className="flex items-center justify-center h-[60vh] text-gray-500 text-lg animate-pulse">
-        empty hero section...
+        Loading hero section...
       </div>
     );
   }

@@ -4,7 +4,7 @@ const SubscriptionSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true, // No duplicate emails
+    unique: true,
   },
   date: {
     type: Date,

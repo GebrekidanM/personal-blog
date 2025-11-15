@@ -3,12 +3,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import useAuth from '../../../../hooks/useAuth';
 import { FiEdit, FiTrash2, FiPlusCircle } from 'react-icons/fi';
 import { api } from '@/lib/api';
 
 export default function ManagePostsPage() {
-  const { isAuthenticated, loading } = useAuth();
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState('Loading posts...');
 
@@ -37,10 +35,10 @@ export default function ManagePostsPage() {
 
   // Fetch posts when the component mounts
   useEffect(() => {
-    if (isAuthenticated) {
+    
       fetchPosts();
-    }
-  }, [isAuthenticated]);
+    
+  }, []);
 
   // Function to handle deleting a post
   const handleDelete = async (postId) => {
@@ -62,18 +60,6 @@ export default function ManagePostsPage() {
       setStatus('Failed to delete post.');
     }
   };
-
-   if (loading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
-  }
-
-  if(isAuthenticated === false && !loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen"> 
-        <p className="text-red-600 font-bold">You must be logged in to access this page.</p>
-      </div>
-    );
-  }
 
   return (
     <div className="container mx-auto px-4 py-8">

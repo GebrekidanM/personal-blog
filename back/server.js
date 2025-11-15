@@ -41,6 +41,8 @@ app.use('/api/posts', require('./routes/posts'));
 app.use('/api/upload', require('./routes/upload'));
 app.use('/api/about', require('./routes/about'));
 app.use('/api/hero', require('./routes/hero'));
+app.use('/api/subscribe', require('./routes/subscription'));
+app.use('/api/catagory', require('./routes/catagory'));
 
 // Global Error Handler
 app.use((err, req, res, next) => {

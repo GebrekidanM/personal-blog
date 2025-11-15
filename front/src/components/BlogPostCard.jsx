@@ -23,7 +23,7 @@ const BlogPostCard = ({ post }) => {
 
             {/* Title */}
             <h3 className="mt-2 text-xl font-bold text-gray-900">
-              {post.title}
+              {post.title} <span className='text-gray-400 text-sm'>- by {post.author}</span>
             </h3>
 
             {/* Excerpt */}

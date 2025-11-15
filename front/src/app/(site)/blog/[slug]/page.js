@@ -23,15 +23,14 @@ async function getPostData(slug) {
 
 export default async function BlogPostPage({ params }) {
   const { slug } = params;
-console.log("Fetching post with slug:", slug);
   const post = await getPostData(slug);
 
   if (!post) {
     notFound();
   }
+
   
-  const { title, category, author, publishedAt, featuredImageUrl, content } = post;
-  
+  const { title, categoryId, author, publishedAt, featuredImageUrl, content } = post;
   const imageUrl = featuredImageUrl
 
   return (
@@ -42,13 +41,13 @@ console.log("Fetching post with slug:", slug);
           {/* Header Section */}
           <div className="text-center mb-8">
             <p className="text-base font-semibold text-blue-600 uppercase">
-              {category || 'Uncategorized'}
+              {categoryId?.name || 'Uncategorized'}
             </p>
             <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
               {title}
             </h1>
             <p className="mt-4 text-md text-gray-500">
-              Published on {new Date(publishedAt).toLocaleDateString()}
+              Published on {new Date(publishedAt).toLocaleDateString()} {author && (`- by: ${author?.name}`)}
             </p>
           </div>
 

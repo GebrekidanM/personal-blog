@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import {api} from '../lib/api';
 
 const NewsletterCTA = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ const NewsletterCTA = () => {
     setMessage('Subscribing...');
 
     try {
-      const response = await fetch('http://localhost:4000/api/subscribe', {
+      const response = await fetch(`${api}/subscribe`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

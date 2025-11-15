@@ -46,6 +46,25 @@ export default function DashboardPage() {
         <h2 className="text-2xl font-semibold mb-6 text-gray-800">Welcome, Atrsaw 👋</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/** Create new Catagory */}
+          <div
+            onClick={() => router.push('/admin/catagory/new')}
+            className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer"
+          >
+            <FaPen className="text-blue-600 text-3xl mb-3" />
+            <h3 className="font-bold text-lg text-blue-600">Create New Category</h3>
+            <p className="mt-2 text-gray-600">Add a new category to organize your posts.</p>
+          </div>
+
+          {/** Manage Catagories */}
+          <div
+            onClick={() => router.push('/admin/catagory')}
+            className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer"
+          >
+            <FaImages className="text-green-600 text-3xl mb-3" />
+            <h3 className="font-bold text-lg text-green-600">Manage Categories</h3> 
+            <p className="mt-2 text-gray-600">Edit or delete existing categories.</p>
+          </div>  
           {/* Create Post */}
           <div
             onClick={() => router.push('/admin/posts/new')}

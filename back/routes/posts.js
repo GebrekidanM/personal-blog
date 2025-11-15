@@ -9,7 +9,7 @@ const Post = require('../models/Post');
 // @desc    Get all posts
 router.get('/', async (req, res) => {
   try {
-    const posts = await Post.find().sort({ publishedAt: -1 }); // Get newest first
+    const posts = await Post.find().sort({ publishedAt: -1 }).populate('author').populate('categoryId');
     res.json(posts);
   } catch (err) {
     console.error(err.message);
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 // @desc    Get a single post by slug
 router.get('/:slug', async (req, res) => {
   try {
-    const post = await Post.findOne({ slug: req.params.slug });
+    const post = await Post.findOne({ slug: req.params.slug }).populate('author').populate('categoryId');
     if (!post) {
       return res.status(404).json({ msg: 'Post not found' });
     }
@@ -36,7 +36,7 @@ router.get('/:slug', async (req, res) => {
 // @desc    Get a single post by its ID (for the edit page)
 router.get('/by-id/:id', async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id).populate('author').populate('categoryId');
     if (!post) {
       return res.status(404).json({ msg: 'Post not found' });
     }
@@ -55,7 +55,7 @@ router.get('/by-id/:id', async (req, res) => {
 // @route   POST api/posts
 // @desc    Create a new post
 router.post('/', auth, async (req, res) => {
-  const { title, slug, excerpt, content, featuredImageUrl, category } = req.body;
+  const { title, slug, excerpt, content, featuredImageUrl, categoryId ,author} = req.body;
   try {
     const newPost = new Post({
       title,
@@ -63,8 +63,8 @@ router.post('/', auth, async (req, res) => {
       excerpt,
       content,
       featuredImageUrl,
-      category,
-      author: req.user.id,
+      categoryId,
+      author,
     });
 
     const post = await newPost.save();

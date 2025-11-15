@@ -21,9 +21,9 @@ const PostSchema = new mongoose.Schema({
   featuredImageUrl: {
     type: String,
   },
-  category: {
-    type: String,
-    default: 'Uncategorized',
+  categoryId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Catagory',
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
