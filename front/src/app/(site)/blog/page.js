@@ -1,3 +1,4 @@
+// front/src/app/(site)/blog/page.js
 'use client';
 
 import { useState, useEffect } from "react";
