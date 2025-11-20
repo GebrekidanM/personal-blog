@@ -28,6 +28,7 @@ export default function EditPostForm({ initialPostData }) {
     const fetchCategories = async () => {
       try {
         const res = await axios.get(`${api}/catagory`);
+        console.log('Fetched categories:', res.data);
         setCategories(res.data);
       } catch (error) {
         console.error('Failed to load categories:', error);
