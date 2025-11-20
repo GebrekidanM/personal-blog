@@ -13,7 +13,7 @@ export default function EditPostForm({ initialPostData }) {
     title: initialPostData.title || '',
     slug: initialPostData.slug || '',
     excerpt: initialPostData.excerpt || '',
-    category: initialPostData.category?.name || '',
+    category: initialPostData.categoryId?.name || '',
     featuredImageUrl: initialPostData.featuredImageUrl || '',
   });
 
@@ -85,6 +85,7 @@ export default function EditPostForm({ initialPostData }) {
     try {
       // Try to find existing category by name
       const findRes = await axios.get(`${api}/catagory/by-name/${categoryName}`);
+      console.log('Found existing category:', findRes.data);
       if (findRes.data) return findRes.data._id;
     } catch (error) {
       // Not found, continue to create
