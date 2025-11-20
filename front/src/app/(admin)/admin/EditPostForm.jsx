@@ -13,7 +13,7 @@ export default function EditPostForm({ initialPostData }) {
     title: initialPostData.title || '',
     slug: initialPostData.slug || '',
     excerpt: initialPostData.excerpt || '',
-    category: initialPostData.categoryId?.name || '',
+    category: initialPostData.categoryId || null,
     featuredImageUrl: initialPostData.featuredImageUrl || '',
   });
 
@@ -115,7 +115,7 @@ export default function EditPostForm({ initialPostData }) {
       const token = localStorage.getItem('authToken');
 
       // Ensure category exists or create it
-      const categoryId = await findOrCreateCategory(formData.category);
+      const categoryId = await findOrCreateCategory(formData.category.name);
       if (!categoryId) {
         setStatus('Failed to save category.');
         return;
@@ -223,7 +223,7 @@ export default function EditPostForm({ initialPostData }) {
                 list="category-list"
                 id="category"
                 name="category"
-                value={formData.category}
+                value={formData.category.name}
                 onChange={handleChange}
                 placeholder="Select or type category"
                 className="mt-1 block w-full input"
