@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
+app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection + Admin Setup
