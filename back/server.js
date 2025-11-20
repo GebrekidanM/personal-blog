@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
 app.use(express.json());
 
 // MongoDB Connection + Admin Setup
@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGO_URI)
       await admin.save();
       console.log("👑 Admin account created:", process.env.ADMIN_EMAIL);
     } else {
-      console.log("✅ Admin already exists");
+      console.log("✅ Admin already exists local");
     }
   })
   .catch(err => console.error("❌ MongoDB connection error:", err));
