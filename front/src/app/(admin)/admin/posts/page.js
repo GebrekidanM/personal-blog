@@ -89,7 +89,7 @@ export default function ManagePostsPage() {
               {posts.map((post) => (
                 <tr key={post._id} className="border-b hover:bg-gray-50">
                   <td className="py-4 font-semibold">{post.title}</td>
-                  <td className="py-4 hidden md:table-cell">{post.category}</td>
+                  <td className="py-4 hidden md:table-cell">{post.categoryId.name}</td>
                   <td className="py-4 hidden sm:table-cell">
                     {new Date(post.publishedAt).toLocaleDateString()}
                   </td>

@@ -8,7 +8,6 @@ import { api } from '@/lib/api';
 
 export default function EditPostForm({ initialPostData }) {
   const router = useRouter();
-  console.log('Initial Post Data:', initialPostData);
 
   const [formData, setFormData] = useState({
     title: initialPostData.title || '',
