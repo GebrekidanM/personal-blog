@@ -13,7 +13,8 @@ export default function EditPostForm({ initialPostData }) {
     title: initialPostData.title || '',
     slug: initialPostData.slug || '',
     excerpt: initialPostData.excerpt || '',
-    category: initialPostData.categoryId.name,
+    category: initialPostData.categoryId.name||"",
+    categoryId: initialPostData.categoryId._id|| "",
     featuredImageUrl: initialPostData.featuredImageUrl || '',
   });
 
@@ -28,7 +29,6 @@ export default function EditPostForm({ initialPostData }) {
     const fetchCategories = async () => {
       try {
         const res = await axios.get(`${api}/catagory`);
-        console.log('Fetched categories:', res.data);
         setCategories(res.data);
       } catch (error) {
         console.error('Failed to load categories:', error);
@@ -54,6 +54,14 @@ export default function EditPostForm({ initialPostData }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleCategoryChange = (e) => {
+    const selectedCategory = e.target.value;
+    //fetch category id based on name
+    const categoryId = categories.find((cat) => cat.name === selectedCategory)?._id || '';
+    setFormData((prev) => ({ ...prev, categoryId: categoryId }));
+    setFormData((prev) => ({ ...prev, category: selectedCategory }));
+
+  }
   // Handle image upload
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -80,31 +88,6 @@ export default function EditPostForm({ initialPostData }) {
     }
   };
 
-  // ✅ Find or create category if it doesn’t exist
-  const findOrCreateCategory = async (category) => {
-    if (!category) return null;
-    try {
-      // Try to find existing category by name
-      const findRes = await axios.get(`${api}/catagory/by-name/${category}`);
-      console.log('Found existing category:', findRes.data);
-      if (findRes.data) return findRes.data._id;
-    } catch (error) {
-      // Not found, continue to create
-    }
-
-    try {
-      const token = localStorage.getItem('authToken');
-      const createRes = await axios.post(
-        `${api}/catagory`,
-        { name: categoryName },
-        { headers: { 'x-auth-token': token } }
-      );
-      return createRes.data._id;
-    } catch (error) {
-      console.error('Error creating category:', error);
-      return null;
-    }
-  };
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -115,15 +98,7 @@ export default function EditPostForm({ initialPostData }) {
     try {
       const token = localStorage.getItem('authToken');
 
-      // Ensure category exists or create it
-      const categoryId = await findOrCreateCategory(formData.category);
-      console.log('Using category ID:', categoryId);
-      if (!categoryId) {
-        setStatus('Failed to save category.');
-        return;
-      }
-
-      const finalPostData = { ...formData, content, category: categoryId };
+      const finalPostData = { ...formData, content};
 
       await axios.put(`${api}/posts/${initialPostData._id}`, finalPostData, {
         headers: { 'x-auth-token': token },
@@ -220,22 +195,22 @@ export default function EditPostForm({ initialPostData }) {
                 Category
               </label>
 
-              {/* ✅ Allows selecting or typing new category */}
-              <input
-                list="category-list"
-                id="category"
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                placeholder="Select or type category"
-                className="mt-1 block w-full input"
-              />
+            <select
+              id="category"
+              name="category"
+              value={formData.category}
+              onChange={handleCategoryChange}
+              className="mt-1 block w-full input"
+            >
+              <option value="">Select category</option>
 
-              <datalist id="category-list">
-                {categories.map((cat) => (
-                  <option key={cat._id} value={cat.name} />
-                ))}
-              </datalist>
+              {categories.map((cat) => (
+                <option key={cat._id} value={cat.name}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+
             </div>
 
             <div className="mt-4">
